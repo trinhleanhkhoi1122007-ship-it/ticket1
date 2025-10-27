@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/ticket.css" />
+    <style>
+      .section {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+      }
+      .price {
+        margin-top: 5px;
+        margin-left: 25px;
+        list-style-type: circle;
+      }
+      .formdatve {
+        height: fit-content;
+        background-color: aliceblue;
+        margin-top: 20px;
+        padding: 30px;
+      }
+      
+        /* Cấu trúc chung */
+        #rangeContainer {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .range-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .range-control {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Khoảng cách giữa thanh trượt và giá trị */
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #dee2e6;
+            margin: 15px 0;
+        }
+
+        /* Định dạng giá trị output */
+        .range-output {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #007bff; /* Màu xanh dương nổi bật */
+            min-width: 30px; /* Đảm bảo output không bị nhảy khi giá trị thay đổi */
+            text-align: right;
+        }
+
+
+        /* Trang trí Thanh trượt (Input Range) */
+        .custom-range {
+            -webkit-appearance: none; /* Tắt giao diện mặc định trên Webkit */
+            appearance: none;
+            width: 100%;
+            height: 8px; /* Độ dày của thanh trượt */
+            background: #e9ecef; /* Màu nền của thanh */
+            outline: none;
+            opacity: 0.7;
+            transition: opacity .2s;
+            border-radius: 4px;
+        }
+
+        .custom-range:hover {
+            opacity: 1;
+        }
+
+        /* Trang trí núm kéo (Thumb) cho Chrome, Safari, Opera */
+        .custom-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px; /* Kích thước núm kéo */
+            height: 18px;
+            background: #007bff; /* Màu núm kéo */
+            cursor: pointer;
+            border-radius: 50%; /* Hình tròn */
+            border: 3px solid #ffffff; /* Viền trắng */
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Trang trí núm kéo (Thumb) cho Firefox */
+        .custom-range::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: #007bff;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="containerhead">
+        <div class="fullogo">
+          <img class="logo" src="/img/Logo-HCMUE---ENG-2.png" />
+        </div>
+        <div class="dieuhuong">
+          <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="navbar">
+              <a class="navbar-brand" href="#"></a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="/html/home.html"
+                    ><span class="textnav">Home</span></a
+                  >
+                  <a class="nav-link" href="#"
+                    ><span class="textnav">Tour</span></a
+                  >
+                  <a class="nav-link" href="#"
+                    ><span class="textnav">Ticket</span></a
+                  >
+                  <a class="nav-link" href="#"
+                    ><span class="textnav">Contact</span></a
+                  >
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="containerbody">
+        <div class="noidung">
+          <h2>TOUR 3N2Đ:HCM-PHÚ QUỐC-LẶN NGẮM SAN HÔ-GRANDWORLD</h2>
+
+          <div class="section">
+            <h3>Vé Thường</h3>
+            <pr><strong>Bao gồm:</strong></pr>
+            <ul>
+              <li>Vé máy bay hạng thường</li>
+              <li>Ở khách sạn 4 sao</li>
+              <li>Theo đoàn từ 10 - 20 người</li>
+              <li>Hướng dẫn viên du lịch</li>
+              <li>Bảo hiểm du lịch</li>
+            </ul>
+            <pr><strong>Giá vé:</strong></pr>
+            <ul class="price">
+              <li>
+                Trẻ nhỏ (&lt; 5 tuổi): <strong>2.999.000 VNĐ/người</strong>
+              </li>
+              <li>
+                Trẻ em (5 - 12 tuổi): <strong>4.990.000 VNĐ/người</strong>
+              </li>
+              <li>
+                Người lớn (&gt; 12 tuổi): <strong>5.499.000 VNĐ/người</strong>
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <h3>Vé Thương Gia</h3>
+            <pr><strong>Bao gồm:</strong></pr>
+            <ul>
+              <li>Vé máy bay hạng thương gia</li>
+              <li>Ở khách sạn 4 sao phòng tổng thống</li>
+              <li>Theo đoàn từ 10 - 20 người</li>
+              <li>Hướng dẫn viên du lịch</li>
+              <li>Bảo hiểm du lịch</li>
+              <li>Có xe đưa đón tới sân bay và về nhà</li>
+              <li>
+                Miễn phí vé trò chơi và các dịch vụ đi kèm (thuê cano, flycam,…)
+              </li>
+            </ul>
+            <pr><strong>Giá vé:</strong></pr>
+            <ul class="price">
+              <li>
+                Trẻ nhỏ (&lt; 5 tuổi): <strong>3.499.000 VNĐ/người</strong>
+              </li>
+              <li>
+                Trẻ em (5 - 12 tuổi): <strong>5.490.000 VNĐ/người</strong>
+              </li>
+              <li>
+                Người lớn (&gt; 12 tuổi): <strong>6.999.000 VNĐ/người</strong>
+              </li>
+            </ul>
+          </div>
+
+          <h2>TOUR 2N1Đ:HCM-PHÚ QUỐC-TINH HOA ĐẢO NGỌC</h2>
+
+          <div class="section">
+            <h3>Vé Thường</h3>
+            <pr><strong>Bao gồm:</strong></pr>
+            <ul>
+              <li>Vé máy bay hạng thường</li>
+              <li>Ở khách sạn 4 sao</li>
+              <li>Theo đoàn từ 10 - 20 người</li>
+              <li>Hướng dẫn viên du lịch</li>
+              <li>Bảo hiểm du lịch</li>
+            </ul>
+            <pr><strong>Giá vé:</strong></pr>
+            <ul class="price">
+              <li>
+                Trẻ nhỏ (&lt; 5 tuổi): <strong>1.999.000 VNĐ/người</strong>
+              </li>
+              <li>
+                Trẻ em (5 - 12 tuổi): <strong>3.490.000 VNĐ/người</strong>
+              </li>
+              <li>
+                Người lớn (&gt; 12 tuổi): <strong>4.499.000 VNĐ/người</strong>
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <h3>Vé Thương Gia</h3>
+            <pr><strong>Bao gồm:</strong></pr>
+            <ul>
+              <li>Vé máy bay hạng thương gia</li>
+              <li>Ở khách sạn 4 sao phòng tổng thống</li>
+              <li>Theo đoàn từ 10 - 20 người</li>
+              <li>Hướng dẫn viên du lịch</li>
+              <li>Bảo hiểm du lịch</li>
+              <li>Có xe đưa đón tới sân bay và về nhà</li>
+              <li>
+                Miễn phí vé trò chơi và các dịch vụ đi kèm (thuê cano, flycam,…)
+              </li>
+            </ul>
+            <pr><strong>Giá vé:</strong></pr>
+            <ul class="price">
+              <li>
+                Trẻ nhỏ (&lt; 5 tuổi): <strong>2.499.000 VNĐ/người</strong>
+              </li>
+              <li>
+                Trẻ em (5 - 12 tuổi): <strong>3.990.000 VNĐ/người</strong>
+              </li>
+              <li>
+                Người lớn (&gt; 12 tuổi): <strong>4.799.000 VNĐ/người</strong>
+              </li>
+            </ul>
+          </div>
+
+          <h2>*THÔNG TIN LƯU Ý</h2>
+          <h2>1. Giá bao gồm:</h2>
+          <ul>
+            <li>
+              <strong>Vận chuyển:</strong>
+              <ul>
+                <li>Vé máy bay khứ hồi, gồm 07kg xách tay + 20kg ký gửi.</li>
+                <li>
+                  Xe du lịch 12–25 chỗ (phù hợp số lượng), đời mới, máy lạnh,
+                  ghế bật.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Lưu trú:</strong>
+              <ul>
+                <li>Khách sạn 4 sao, tiêu chuẩn 2–3 khách/phòng.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Khác:</strong>
+              <ul>
+                <li>Ăn uống theo chương trình.</li>
+                <li>Hướng dẫn viên tiếng Việt suốt tuyến.</li>
+                <li>Bảo hiểm du lịch theo quy định.</li>
+                <li>Vé tham quan vào cổng 1 lần.</li>
+                <li>Nón du lịch, khăn ướt và nước đóng chai.</li>
+                <li>Thuế VAT.</li>
+              </ul>
+            </li>
+          </ul>
+
+          <h2>2. Giá không bao gồm:</h2>
+          <ul>
+            <li>Phụ thu phòng đơn: 1.000.000đ/khách.</li>
+            <li>Phụ thu ngoại quốc: 500.000đ/khách.</li>
+            <li>Tiền TIP cho hướng dẫn viên và tài xế địa phương.</li>
+            <li>Vé VinWonders, Safari.</li>
+            <li>Chương trình khám phá 4 đảo bằng cano.</li>
+            <li>Vé cáp treo Hòn Thơm.</li>
+            <li>
+              Vé Grand World, Bảo tàng Gấu, dạo thuyền sông Venice, show Tinh
+              Hoa Việt Nam tại Grand World.
+            </li>
+            <li>
+              Chi phí cá nhân ngoài chương trình: giặt ủi, điện thoại, minibar,…
+            </li>
+          </ul>
+
+          <h2>3. Phụ thu & Giá trẻ em:</h2>
+          <ul>
+            <li>
+              <strong>Trẻ dưới 2 tuổi:</strong> 500.000đ/bé (sử dụng chung dịch
+              vụ và ngủ chung giường với người lớn).
+            </li>
+            <li>
+              <strong>Từ 2 - dưới 5 tuổi:</strong> Giá theo website. Bé thứ hai
+              đi kèm áp dụng giá trẻ từ 5 - dưới 10 tuổi.
+            </li>
+            <li>
+              <strong>Từ 5 - dưới 10 tuổi:</strong> Giá theo website. Bé thứ hai
+              đi kèm áp dụng giá người lớn.
+            </li>
+            <li><strong>Từ 10 tuổi trở lên:</strong> 100% giá người lớn.</li>
+          </ul>
+
+          <h2>4. Quy định hủy đổi:</h2>
+          <ul>
+            <li>Hủy tour sau khi đăng ký: 30% giá tour.</li>
+            <li>Trước ngày đi 20 ngày: 50% giá tour.</li>
+            <li>Trước ngày đi 10–19 ngày: 75% giá tour.</li>
+            <li>Trước ngày đi 0–10 ngày: 100% giá tour.</li>
+            <li>
+              Ngày lễ, Tết: không hoàn, không hủy, không đổi – khách mất phí
+              100%.
+            </li>
+          </ul>
+          <pr>
+            Việc hủy bỏ chuyến đi phải được thông báo trực tiếp với công ty hoặc
+            qua fax, email, tin nhắn và phải được công ty xác nhận. Việc hủy bỏ
+            bằng điện thoại không được chấp nhận.
+          </pr>
+          <pr>
+            Do tính chất đoàn ghép khách lẻ, nếu số lượng đoàn dưới 10 người,
+            công ty sẽ thông báo trước 3 ngày để thỏa thuận lại hoặc hoàn tiền.
+            Trường hợp bất khả kháng (khủng bố, thiên tai...) có thể thay đổi
+            hoặc hủy chương trình. Sự thay đổi do lỗi vận chuyển, công ty không
+            chịu trách nhiệm phát sinh.
+          </pr>
+
+          <h2>5. Lưu ý:</h2>
+          <ul>
+            <li>
+              Thứ tự các điểm tham quan có thể thay đổi cho phù hợp với tình
+              hình thực tế nhưng vẫn đảm bảo đầy đủ chương trình.
+            </li>
+            <li>
+              Tour liên quan đến máy bay – hành trình có thể thay đổi tùy thuộc
+              hãng vận chuyển.
+            </li>
+            <li>
+              Giờ nhận phòng khách sạn: 14h00–15h00. Giờ trả phòng: 12h00.
+            </li>
+            <li>
+              Người từ 14 tuổi trở lên phải có CMND gốc, hộ chiếu gốc hoặc bằng
+              lái xe gốc còn hạn sử dụng.
+            </li>
+            <li>
+              Trẻ em dưới 14 tuổi phải có giấy khai sinh bản gốc hoặc hộ chiếu
+              gốc.
+            </li>
+            <li>
+              Mọi giấy tờ cá nhân (CMND, Passport...) là trách nhiệm của khách
+              hàng. Công ty không chịu trách nhiệm và không hoàn chi phí nếu
+              giấy tờ sai hoặc hết hạn.
+            </li>
+          </ul>
+
+          <h2>6. Hướng dẫn viên:</h2>
+          <pr>
+            Hướng dẫn viên sẽ liên hệ với quý khách khoảng 1 ngày trước khi khởi
+            hành để sắp xếp giờ đón và cung cấp thông tin cần thiết cho chuyến
+            đi.
+          </pr>
+        </div>
+        <div class="timkiem">
+          <div class="thanhtimkiem">
+            <nav class="navbar bg-body-tertiary">
+              <div class="container-search">
+                <form class="d-flex" role="search">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                  />
+                  <button class="btn btn-outline-success" type="submit">
+                    Search
+                  </button>
+                </form>
+              </div>
+            </nav>
+          </div>
+          <div class="formdatve">
+            <div class="noidungdatve">
+              <div class="formhead">
+                <h2>Giá vé</h2>
+                <p>xem vé</p>
+              </div>
+
+              <div class="formbody">
+                <div class="chonve">
+                  <label for="disabledTextInput" class="form-label"
+                    >chọn loại vé</label
+                  >
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                  >
+                    <option selected>vé thường 3N2Đ</option>
+                    <option value="1">vé thương gia 3N2Đ</option>
+                    <option value="2">vé thường 2N1Đ</option>
+                    <option value="3">vé thương gia 2N1Đ</option>
+                  </select>
+                </div>
+                <div class="venguoi">
+                  <div id="rangeContainer">
+                    <div class="range-group">
+                        <label for="range1" class="form-label">Người lớn(>12 tuổi):</label>
+                        <div class="range-control">
+                        <input type="range" class="custom-range" min="0" max="30" value="20" id="range1">
+                        <output for="range1" id="rangeValue1" class="range-output" aria-hidden="true">70</output>
+                        </div>
+                    </div>    
+
+                    <hr>
+
+                    <div class="range-group">
+                        <label for="range2" class="form-label">Trẻ em(5-12 tuổi):</label>
+                        <div class="range-control">
+                        <input type="range" class="custom-range" min="0" max="20" value="5" id="range2">
+                        <output for="range2" id="rangeValue2" class="range-output" aria-hidden="true">50</output>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="range-group">
+                        <label for="range3" class="form-label">Trẻ nhỏ(<5 tuổi):</label>
+                        <div class="range-control">
+                        <input type="range" class="custom-range" min="0" max="10" value="3" id="range3">
+                        <output for="range3" id="rangeValue3" class="range-output" aria-hidden="true">85</output>
+                        </div>
+                    </div>
+                    </div>
+                    <script>
+                    // Lấy tất cả các thanh trượt trong container
+                    const rangeInputs = document.querySelectorAll('#rangeContainer input[type="range"]');
+
+                    /**
+                     * Thiết lập trình lắng nghe sự kiện cho một thanh trượt.
+                     * @param {HTMLElement} input - Thanh trượt (input[type="range"])
+                     */
+                    function setupRangeInput(input) {
+                        // ID của output tương ứng được tạo bằng cách thay thế "range" trong ID của input bằng "rangeValue"
+                        const outputId = input.id.replace('range', 'rangeValue');
+                        const output = document.getElementById(outputId);
+
+                        // Đảm bảo output tồn tại
+                        if (output) {
+                        // Hàm cập nhật giá trị
+                        const updateValue = () => {
+                            output.textContent = input.value;
+                        };
+
+                        // 1. Cập nhật giá trị ban đầu (để đảm bảo đồng bộ, dù đã đặt trong HTML)
+                        updateValue();
+
+                        // 2. Thêm trình lắng nghe sự kiện 'input'
+                        input.addEventListener('input', updateValue);
+                        }
+                    }
+
+                    // Lặp qua tất cả 3 thanh trượt và thiết lập chúng
+                    rangeInputs.forEach(setupRangeInput);
+                    </script>
+              </div>
+              <div class="formfoot">
+                <button type="submit" class="btn btn-primary">YÊU CẦU ĐẶT VÉ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="containerfoot"></div>
+    </div>
+  </body>
+</html>

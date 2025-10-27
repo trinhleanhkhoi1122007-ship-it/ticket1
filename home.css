@@ -1,0 +1,110 @@
+body{
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.container-fluid{
+    display: grid;
+    height: 8000px;
+    grid-template-rows: 800px 100% 100px;
+}
+.containerhead{
+    display: grid;
+    grid-template-rows: 80% 20%;
+    border-radius: 10px;
+}
+.navbar{
+    padding: 5px;
+    margin: 20px;
+}
+.logo{
+    height: 100px;
+}
+.fullogo{
+    background-image: url(maxresdefault.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+.tencty{
+    font-weight: 400px;
+    float: right;
+}
+.containerbody{
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 80% 20%;
+}
+.noidung{
+   background-color: aliceblue;
+   padding: 50px;
+}
+.timkiem{
+     margin-left: 50px;
+}
+.thanhtimkiem{
+    background-color: aliceblue;
+    padding: 30px;
+}
+.comment{
+    height: 2000px;
+    background-color: aliceblue;
+    margin-top: 20px;
+    padding: 30px;
+}
+.containerfoot{
+    background-color: white;
+}
+.textnav{
+    font-size: larger;
+    padding: 10px;
+    font-weight: bold;
+}
+h1{
+    text-align: center;
+}
+h1,h2,h3{
+    font-family:sans-serif;
+    font-weight: bold;
+}
+p{
+    font-size: 30px;
+    font-family:sans-serif;
+    background-color: white;
+    padding: 40px;
+    line-height: 1.5;
+}
+.anhcongty{
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+    margin: 20px;
+}
+.anh1{
+    width: 80%;
+    height: auto;
+    margin-left: 100px;
+}
+.anhphuquoc{
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+}
+.anh2{
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.hinhthucpham{
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+}
+.anh3{
+    float: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
